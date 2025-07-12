@@ -74,7 +74,7 @@
     }
 
     .feature-card {
-      background: white;
+      background: light;
       border-left: 6px solid var(--primary);
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -149,15 +149,13 @@
 </head>
 <body>
 
-<canvas id="bubbles"></canvas>
-
 <header>
   <h1>GOKLin Laundry PURWOKERTO</h1>
   <p> Cari Laundry Murah di purwokerto, Kilat, Aman Buat Ibadah Antar jemput sampe depan rumah</p>
 </header>
 
 <div class="promo-banner">
-  PROMO GILA! Pelanggan Baru Dapat Diskon<span>30%</span>🔥
+  PROMO GILA! Pelanggan Baru Dapat Diskon<span>30% Wa Skarang </span>🔥
 </div>
 
 <div class="container">
@@ -170,7 +168,7 @@
     <div class="feature-card">
       <i class="fas fa-tags"></i>
       <h3>Harga Termurah</h3>
-      <p>Cuci + Setrika cuma Rp5.000/kg, kilat? Bisa!</p>
+      <p>Cuci + Setrika cuma Rp5.000/kg, kilat? setrika saja Bisa hanya Rp 4.000/kg!</p>
     </div>
     <div class="feature-card">
       <i class="fas fa-sync-alt"></i>
@@ -182,15 +180,18 @@
       <h3>Aman Buat Ibadah</h3>
       <p>Air bersih, sabun aman, pakaian tetap suci dan nyaman dipakai sholat sesuai syariat 3x proses.</p>
     </div>
+        <div class="feature-card">
+          <i class="fas fa-gem"></i>
+          <h3>Loyalti Card Emas</h3>
+          <p>Cuci 10x = 0.001g Emas 24K. Keren & eksklusif!</p>
+        </div>
   </div>
 
   <div class="cta">
     <h2>🎁 Yuk Manfaatin Promo Ini!</h2>
-    <p>Cukup klik tombol WA, kami langsung jemput !</p>
+    <p>Cukup klik tombol WA, kami langsung jemput antar kedepan rumah!</p>
     <a href="https://wa.me/6285716561112">Chat Sekarang di WhatsApp</a>
   </div>
-</div>
-
 <!-- Alamat + Google Maps -->
 <div style="background:#f5f5f5; padding: 40px 20px;">
   <div class="container">
@@ -214,54 +215,10 @@
   </div>
 </div>
 
-
-
 <footer>
-  © 2025 GOKLin Laundry | Powered by Rezeq Laundry
+  © 2025 GOKLin Laundry | Powered kang HENDY
 </footer>
 
-<script>
-  // Bubble sabun animasi
-  const canvas = document.getElementById("bubbles");
-  const ctx = canvas.getContext("2d");
-  let bubbles = [];
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = 300;
-  }
-
-  window.addEventListener("resize", resizeCanvas);
-  resizeCanvas();
-
-  function createBubble() {
-    return {
-      x: Math.random() * canvas.width,
-      y: canvas.height + 20,
-      radius: Math.random() * 10 + 2,
-      speed: Math.random() * 1.2 + 0.5,
-      alpha: Math.random() * 0.4 + 0.5
-    };
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    bubbles = bubbles.filter(b => b.y > -20);
-    while (bubbles.length < 50) bubbles.push(createBubble());
-
-    for (let b of bubbles) {
-      b.y -= b.speed;
-      ctx.beginPath();
-      ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${b.alpha})`;
-      ctx.fill();
-    }
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-</script>
 
 </body>
 </html>
