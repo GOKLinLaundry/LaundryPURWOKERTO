@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GOKLin Laundry PURWOKERTO - Promo GOKIL 30%</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* --- CSS Variables --- */
+    :root {
+      --primary: #0077ff;
+      --accent: #ff4081;
+      --dark: #263238;
+      --header-gradient-start: #0077ff;
+      --header-gradient-end: #00c6ff;
+      --main-background: #1a202c; /* Warna gelap untuk kontras gelembung */
+      --text-on-dark: #e2e8f0; /* Warna teks yang kontras di atas gelap */
+    }
+
+    /* --- Base Styles --- */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--main-background);
+      color: var(--text-on-dark);
+      overflow-x: hidden;
+      position: relative; /* Penting untuk `z-index` pada elemen anak */
+    }
+
+    /* --- Bubbles Canvas Styles --- */
+    canvas#bubbles {
+      position: fixed; /* Tetap di posisi ini saat scroll */
+      top: 0;
+      left: 0;
+      width: 100vw;   /* Lebar penuh viewport */
+      height: 100vh;  /* Tinggi penuh viewport */
+      pointer-events: none; /* Agar tidak menghalangi interaksi mouse */
+      z-index: -1;    /* Pastikan di belakang semua konten */
+      filter: blur(0.5px); /* Efek blur ringan */
+    }
+
+    /* --- Header Section --- */
+    header {
+      background: linear-gradient(to right, var(--header-gradient-start), var(--header-gradient-end));
+      color: white;
+      padding: 50px 20px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 1; /* Pastikan konten header di atas gelembung */
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin: 0 0 10px;
+      color: white;
+    }
+
+    header p {
+      font-size: 20px;
+      margin: 0;
+      color: white;
+    }
+
+    /* --- Promo Banner --- */
+    .promo-banner {
+      background-color: var(--accent);
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-banner span {
+      font-size: 26px;
+      background: #fff;
+      color: var(--accent);
+      padding: 5px 10px;
+      border-radius: 6px;
+      margin-left: 10px;
+    }
+
+    /* --- General Container --- */
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- Features Section --- */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .feature-card {
+      background: white; /* Tetap putih agar menonjol di background gelap */
+      border-left: 6px solid var(--primary);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      flex: 1 1 260px; /* Fleksibel untuk 3 kolom, atau 1 di mobile */
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+      color: var(--dark); /* Pastikan teks di card ini gelap */
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-card i {
+      font-size: 36px;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: var(--dark);
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* --- Call to Action Section --- */
+    .cta {
+      background-color: var(--primary);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 12px;
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      color: white;
+    }
+
+    .cta p {
+        color: white;
+    }
+
+    .cta a {
+      margin-top: 10px;
+      display: inline-block;
+      padding: 14px 30px;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta a:hover {
+        background: #e63973;
+        transform: translateY(-2px);
+    }
+
+    /* --- Testimonials Section --- */
+    .testimonials-section {
+        background: rgba(45, 55, 72, 0.9); /* Semi-transparan untuk efek gelembung */
+        color: var(--text-on-dark);
+        padding: 60px 20px;
+        margin-top: 50px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .testimonials-section h2 {
+        text-align: center;
+        color: #63b3ed; /* Warna biru muda yang kontras */
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .testimonials-section p.intro-text {
+        text-align: center;
+        font-size: 18px;
+        color: #a0aec0; /* Warna abu-abu yang lebih terang */
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    @media (min-width: 768px) {
+        .testimonial-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .testimonial-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .testimonial-card:nth-child(4) {
+            grid-column: span 1; /* Reset */
+        }
+        .testimonial-card:nth-child(5) {
+            grid-column: 2 / 3; /* Pusatkan card kelima di kolom kedua */
+        }
+    }
+
+    .testimonial-card {
+        background: rgba(255, 255, 255, 0.08); /* Background kartu testimoni semi-transparan gelap */
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Bayangan lebih gelap */
+        padding: 30px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.15); /* Border sedikit lebih terlihat */
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .testimonial-card p.quote {
+        font-size: 16px;
+        font-style: italic;
+        color: #cbd5e0; /* Warna teks kutipan lebih terang */
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        margin-top: auto;
+    }
+
+    .testimonial-author img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 3px solid #63b3ed; /* Warna border avatar menyesuaikan tema */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .testimonial-author .name {
+        font-weight: bold;
+        color: #63b3ed; /* Warna nama yang kontras */
+        font-size: 18px;
+    }
+
+    .testimonial-author .title {
+        font-size: 14px;
+        color: #a0aec0; /* Warna judul lebih terang */
+    }
+
+    /* --- Address and Map Section --- */
+    .address-map-section {
+        background: rgba(45, 55, 72, 0.9); /* Semi-transparan untuk efek gelembung */
+        padding: 40px 20px;
+        position: relative;
+        z-index: 1;
+        color: var(--text-on-dark);
+    }
+
+    .address-map-section h2 {
+        text-align:center;
+        color:#63b3ed;
+        font-size:32px;
+        margin-bottom:15px;
+    }
+
+    .address-map-section p {
+        text-align:center;
+        font-size:16px;
+        color:#a0aec0;
+        margin-bottom: 30px;
+    }
+
+    .address-map-section .map-button {
+        display: block;
+        width: fit-content;
+        margin: 20px auto;
+        padding:12px 24px;
+        background:#4caf50;
+        border-radius:8px;
+        text-decoration:none;
+        color:white;
+        font-weight:bold;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .address-map-section .map-button:hover {
+        background: #449d48;
+        transform: translateY(-2px);
+    }
+
+    .address-map-section iframe {
+        border:0;
+        border-radius:12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        margin-top:20px;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1a202c;
+      color: #cbd5e0;
+      font-size: 14px;
+      margin-top: 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- Popup Styles --- */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Pastikan di atas semua konten */
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-content {
+      background: linear-gradient(to right, var(--accent), #ff70a6);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .popup-overlay.show .popup-content {
+      transform: scale(1);
+    }
+
+    .popup-content h3 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .popup-content p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .popup-content .popup-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #4caf50; /* Warna hijau untuk tombol WA */
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .popup-content .popup-button:hover {
+      background: #449d48;
+      transform: translateY(-2px);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    .popup-close:hover {
+      transform: rotate(90deg);
+    }
+
+    /* --- Floating WhatsApp Button --- */
+    .floating-whatsapp {
+      position: fixed; /* Membuat tombol mengambang */
+      bottom: 20px;    /* Jarak dari bawah */
+      right: 20px;     /* Jarak dari kanan */
+      background-color: #25D366; /* Warna hijau WhatsApp */
+      color: white;
+      border-radius: 50%; /* Bentuk lingkaran */
+      width: 60px;       /* Lebar tombol */
+      height: 60px;      /* Tinggi tombol */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;   /* Ukuran ikon */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan */
+      z-index: 999;      /* Pastikan di atas elemen lain (di bawah popup) */
+      transition: transform 0.3s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.1); /* Efek membesar saat di-hover */
+    }
+
+    .floating-whatsapp i {
+      color: white; /* Pastikan ikon berwarna putih */
+    }
+
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 768px) {
+      .feature-card {
+        flex: 1 1 100%;
+      }
+      header h1 {
+        font-size: 34px;
+      }
+      header p {
+        font-size: 18px;
+      }
+      .promo-banner {
+        font-size: 18px;
+        padding: 20px;
+      }
+      .promo-banner span {
+        font-size: 22px;
+      }
+      .testimonials-section h2, .address-map-section h2 {
+          font-size: 28px;
+      }
+      .testimonials-section p.intro-text {
+          font-size: 16px;
+      }
+      .testimonial-card p.quote {
+          font-size: 15px;
+      }
+      .testimonial-author img {
+          width: 50px;
+          height: 50px;
+      }
+      .testimonial-author .name {
+          font-size: 16px;
+      }
+      .testimonial-author .title {
+          font-size: 13px;
+      }
+      .popup-content {
+        padding: 30px 20px;
+        max-width: 90%;
+      }
+      .popup-content h3 {
+        font-size: 24px;
+      }
+      .popup-content p {
+        font-size: 16px;
+      }
+      .popup-content .popup-button {
+        font-size: 16px;
+        padding: 12px 25px;
+      }
+      .floating-whatsapp {
+        width: 50px; /* Ukuran lebih kecil di mobile */
+        height: 50px;
+        font-size: 24px;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bubbles"></canvas>
+
+  <div class="main-content-wrapper">
+    <header>
+      <h1>GOKLin Laundry PURWOKERTO</h1>
+      <p> Cari Laundry Murah di Purwokerto, Kilat, Aman Buat Ibadah Antar Jemput Sampai Depan Rumah</p>
+    </header>
+
+    <div class="promo-banner">
+      PROMO GOKIL! Pelanggan Baru Dapat Diskon<span>30%</span>🔥
+    </div>
+
+    <div class="container">
+      <div class="features">
+        <div class="feature-card">
+          <i class="fas fa-shuttle-van"></i>
+          <h3>Gratis Jemput</h3>
+          <p>Langsung WA saja, kami yang jemput tanpa ribet!</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-tags"></i>
+          <h3>Harga Termurah</h3>
+          <p>Cuci + Setrika cuma Rp5.000/kg, kilat? Bisa! Setrika saja Rp4.000/kg Gokil hematnya</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-sync-alt"></i>
+          <h3>Proses 3x</h3>
+          <p>Bersih banget! Cuci, bilas, bilas lagi. Wanginya tahan lama.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-mosque"></i>
+          <h3>Aman Buat Ibadah</h3>
+          <p>Air bersih, sabun aman, pakaian tetap suci dan nyaman dipakai sholat sesuai syariat 3x proses.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-gem"></i>
+            <h3>Loyalti Card Emas</h3>
+            <p>Cuci 10x = 0.001g Emas 24K. Keren & eksklusif!</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2>🎁 Yuk Manfaatkan Promo Ini!</h2>
+        <p>Cukup klik tombol WA, kami langsung jemput!</p>
+        <a href="https://wa.me/6285716561112" target="_blank">Chat Sekarang di WhatsApp</a>
+      </div>
+    </div>
+
+    <section class="testimonials-section">
+        <h2>Apa Kata Pelanggan Kami?</h2>
+        <p class="intro-text">Kami bangga telah membantu banyak pelanggan di Purwokerto menikmati pakaian bersih dan wangi tanpa repot. Berikut adalah beberapa testimoni dari mereka:</p>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="quote">"GoKLin Laundry benar-benar **penyelamat** di tengah kesibukan saya! Pakaian selalu kembali **bersih sempurna**, wangi, dan rapi. Layanan jemput antar gratisnya itu lho, sangat membantu. Prosesnya cepat, cuma WA saja, nanti diambil dan diantar lagi. **Super praktis!**"</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/8Qj9S5k.png" alt="Avatar Fitriani">
+                    <div>
+                        <div class="name">Fitriani</div>
+                        <div class="title">Dosen Universitas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Awalnya ragu coba laundry online, tapi GoKLin Laundry bikin saya **ketagihan!** Kualitas cuciannya **jempolan**, noda bandel hilang dan serat kain tetap terjaga. Ditambah lagi, stafnya ramah dan responsif. **Harga juga bersaing banget** dengan kualitas yang diberikan. Rekomended buat yang cari laundry terpercaya di Purwokerto!"</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/eB3Z4mP.png" alt="Avatar Bayu Pradana">
+                    <div>
+                        <div class="name">Bayu Pradana</div>
+                        <div class="title">Pengusaha Muda</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Sebagai mahasiswa rantau, laundry itu PR banget. Untungnya ada GoKLin! Mereka **super responsif**, pakaian dijemput dan diantar tepat waktu. Hasilnya? **Wangiii pol** dan rapi banget kayak disetrika profesional. Sekarang nggak perlu antre atau capek nyuci sendiri lagi. **GoKLin terbaik!**"</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/lM5v1P8.png" alt="Avatar Rina Amelia">
+                    <div>
+                        <div class="name">Rina Amelia</div>
+                        <div class="title">Mahasiswi Universitas Jenderal Soedirman</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Saya sering pakai jasa laundry untuk seragam kerja. Sejak pakai GoKLin, **nggak pernah kecewa**. Mereka detail banget, bahkan kancing yang longgar pun kadang diperbaiki. Ini menunjukkan **profesionalitas tinggi**. Cocok banget buat yang butuh layanan laundry premium di Purwokerto."</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/p0B7W0K.png" alt="Avatar Hadi Wijaya">
+                    <div>
+                        <div class="name">Hadi Wijaya</div>
+                        <div class="title">Pegawai Bank Swasta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="address-map-section">
+      <div class="container">
+        <h2>📍 Alamat GOKLin Laundry</h2>
+        <p>
+          Jl. Gatramas Raya No.2 Blok O, Tegalmulya, Ledug, Kec. Kembaran,<br>
+          Kabupaten Banyumas, Jawa Tengah 53182
+        </p>
+        <a href="https://www.google.com/maps/dir//Jalan+Gatramas+Raya+No.2+Blok+O,+Tegalmulya,+Ledug,+Kabupaten+Banyumas,+Jawa+Tengah,+Indonesia/data=!4m9!4m8!1m0!1m5!1m1!19sChIJX6nEA8leZS4REYc_mDpozWc!2m2!1d109.274425!2d-7.4124759!3e0" target="_blank" class="map-button">
+          Buka di Google Maps
+        </a>
+        <div style="margin-top:30px;">
+          <iframe
+            src="https://www.google.com/maps/dir//Jalan+Gatramas+Raya+No.2+Blok+O,+Tegalmulya,+Ledug,+Kabupaten+Banyumas,+Jawa+Tengah,+Indonesia/data=!4m9!4m8!1m0!1m5!1m1!19sChIJX6nEA8leZS4REYc_mDpozWc!2m2!1d109.274425!2d-7.4124759!3e0"
+            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 GOKLin Laundry | powered kang HENDY
+    </footer>
+  </div>
+
+  <a href="https://wa.me/6285716561112" class="floating-whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="popup-overlay" id="discountPopup">
+    <div class="popup-content">
+      <button class="popup-close" id="closePopup">×</button>
+      <h3>YAKIN Mau Melewatkan Diskon GOKIL Ini?</h3>
+      <p>Dapatkan **30% POTONGAN HARGA** spesial untuk pelanggan baru! Jangan sampai kelewatan kesempatan emas ini.</p>
+      <a href="https://wa.me/6285716561112" target="_blank" class="popup-button">WA SEKARANG!</a>
+    </div>
+  </div>
+
+  <script>
+    // --- Bubble Animation Logic ---
+    const canvas = document.getElementById("bubbles");
+    const ctx = canvas.getContext("2d");
+    let bubbles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas(); // Initialize canvas size on load
+
+    function createBubble() {
+      return {
+        x: Math.random() * canvas.width,
+        y: canvas.height + 20, // Start from below the canvas
+        radius: Math.random() * 10 + 2,
+        speed: Math.random() * 1.2 + 0.5,
+        alpha: Math.random() * 0.2 + 0.4 // Adjusted alpha for visibility on dark background
+      };
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear entire canvas
+      bubbles = bubbles.filter(b => b.y > -20); // Remove bubbles that are off-screen (top)
+      while (bubbles.length < 70) bubbles.push(createBubble()); // Maintain a number of bubbles
+
+      for (let b of bubbles) {
+        b.y -= b.speed;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${b.alpha})`; // White bubbles
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animate); // Loop the animation
+    }
+
+    animate(); // Start the bubble animation
+
+    // --- Popup Logic ---
+    const discountPopup = document.getElementById('discountPopup');
+    const closePopupButton = document.getElementById('closePopup');
+    let hasScrolledToBottom = false; // Flag to ensure popup only shows once
+
+    function checkScrollForPopup() {
+      // Calculate scroll position
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+
+      // Show popup when user scrolls within 200px of the bottom
+      // You can adjust '200' to change when it appears
+      if ((scrollTop + clientHeight >= scrollHeight - 200) && !hasScrolledToBottom) {
+        discountPopup.classList.add('show');
+        hasScrolledToBottom = true; // Set flag so it doesn't reappear
+        window.removeEventListener('scroll', checkScrollForPopup); // Remove listener to prevent multiple triggers
+      }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', checkScrollForPopup);
+
+    // Close popup button event listener
+    closePopupButton.addEventListener('click', () => {
+      discountPopup.classList.remove('show');
+      // Optional: If you want the popup to reappear after a page reload,
+      // you would remove the `hasScrolledToBottom` flag and its listener,
+      // or use localStorage to persist the "seen" status.
+    });
+  </script>
+
+</body>
+</html>
+
