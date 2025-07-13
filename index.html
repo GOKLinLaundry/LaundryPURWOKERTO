@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoKLin Laundry Purwokerto - Promo GOKIL 30%</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="https://res.cloudinary.com/dnb9edx3e/image/upload/v1752372653/file_000000008a2461f997282432b9dda8fe_yfx3ue.png" type="image/png">
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dnb9edx3e/image/upload/v1752372653/file_000000008a2461f997282432b9dda8fe_yfx3ue.png" type="image/png">
+
+  <style>
+    /* Custom styles and animations not in default Tailwind */
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+
+    /* Ensure body uses full height and font families */
+    body {
+      font-family: 'Open Sans', sans-serif; /* Default body font */
+      min-height: 100vh; /* Ensure body takes full viewport height */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    h1, h2, h3, .font-montserrat { /* Apply Montserrat to headings or specific classes */
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Utility to hide scrollbar while allowing content to be there */
+    html {
+      scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    }
+    body::-webkit-scrollbar {
+      display: none; /* For Chrome, Safari, and Opera */
+    }
+    body {
+      -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+      scrollbar-width: none;  /* For Firefox */
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366; /* WhatsApp Green */
+      color: white;
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse-whatsapp 2s infinite; /* Added pulse animation for WhatsApp */
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    @keyframes pulse-whatsapp {
+      0% { transform: scale(1); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); }
+      50% { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); }
+      100% { transform: scale(1); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); }
+    }
+
+    /* Popup Styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-content {
+      background: linear-gradient(to bottom right, #00AEEF, #007bb6); /* Gradient blue for popup */
+      color: #FFFFFF;
+      padding: 45px 35px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      max-width: 450px;
+      transform: scale(0.85);
+      transition: transform 0.4s ease;
+      position: relative;
+      border: 3px solid #FFFFFF;
+    }
+
+    .popup-overlay.show .popup-content {
+      transform: scale(1);
+    }
+
+    .popup-content h3 {
+      font-size: 32px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      color: #FFFFFF;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .popup-content p {
+      font-size: 19px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .popup-content .popup-button {
+      display: inline-block;
+      padding: 18px 35px;
+      background: #FFD600; /* Popup button uses secondary yellow */
+      color: #333333; /* Text color for CTA button */
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 19px;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: pulse-button 2s infinite; /* Different pulse for popup button */
+    }
+
+    .popup-content .popup-button:hover {
+      background: #FFEC80;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    @keyframes pulse-button {
+      0% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+      50% { transform: scale(1.03); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+      100% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    .popup-close:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Responsive adjustments for popup */
+    @media (max-width: 768px) {
+      .popup-content {
+        padding: 35px 25px;
+        max-width: 90%;
+      }
+      .popup-content h3 {
+        font-size: 28px;
+      }
+      .popup-content p {
+        font-size: 17px;
+      }
+      .popup-content .popup-button {
+        font-size: 17px;
+        padding: 15px 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .popup-content h3 {
+          font-size: 24px;
+      }
+      .popup-content p {
+          font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans">
+
+  <section class="relative bg-blue-50 text-gray-800 overflow-hidden min-h-screen flex items-center justify-center p-4">
+    <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-10" style="background-image: url('https://placehold.co/1920x1080/e0f2fe/3b82f6?text=GoKLin+Clean+Fabric')"></div>
+    <div class="absolute -top-20 -left-20 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+    <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+    <div class="absolute top-1/2 left-1/4 w-60 h-60 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="absolute top-0 right-0 -mt-8 -mr-8 sm:mt-0 sm:mr-0 transform rotate-12">
+        <div class="bg-yellow-400 text-gray-900 font-bold py-2 px-6 rounded-full shadow-lg animate-pulse">
+          Diskon 30% Pelanggan Baru!
+        </div>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 font-montserrat">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400">
+          GoKLin Laundry Purwokerto
+        </span>
+        <br class="hidden sm:block">
+        <span class="text-3xl sm:text-4xl md:text-5xl text-gray-700">Promo GOKIL Murah Meriah!</span>
+      </h1>
+
+      <p class="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 leading-relaxed">
+        Laundry Bersih, Wangi, Rapi dengan Antar Jemput <span class="font-bold text-blue-600">GRATIS</span>. Solusi Praktis untuk <span class="font-semibold bg-green-100 px-2 py-1 rounded">Anak Kos</span> & <span class="font-semibold bg-green-100 px-2 py-1 rounded">Ibu Rumah Tangga</span> di Purwokerto!
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="https://wa.me/6285716561112" class="w-full sm:w-auto transform transition-transform duration-300 hover:scale-105 group relative inline-block text-lg font-bold">
+          <span class="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg"></span>
+          <div class="relative w-full sm:w-auto px-10 py-4 bg-gray-900 rounded-lg leading-none flex items-center justify-center transition-colors duration-200 group-hover:bg-transparent">
+            <span class="text-yellow-400 group-hover:text-white">AMBIL DISKON 30% SEKARANG!</span>
+          </div>
+        </a>
+        <a href="#harga" class="w-full sm:w-auto px-10 py-4 text-lg font-semibold text-blue-600 bg-transparent border-2 border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition-colors duration-300">
+          Lihat Paket Hemat Kami
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container mx-auto p-4 py-16">
+    <section id="features" class="my-16 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 font-montserrat">Mengapa Pilih GoKLin Laundry?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <i class="fas fa-shuttle-van text-5xl text-blue-500 mb-4"></i>
+          <h3 class="text-2xl font-semibold mb-2 font-montserrat">Gratis Antar Jemput</h3>
+          <p class="text-gray-600">Kami jemput dan antar cucian Anda langsung ke rumah, tanpa biaya tambahan!</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <i class="fas fa-tags text-5xl text-green-500 mb-4"></i>
+            <h3 class="text-2xl font-semibold mb-2 font-montserrat">Harga Termurah</h3>
+            <p class="text-gray-600">Dapatkan kualitas premium dengan harga paling bersaing di Purwokerto.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <i class="fas fa-hand-holding-usd text-5xl text-yellow-500 mb-4"></i>
+            <h3 class="text-2xl font-semibold mb-2 font-montserrat">Loyalty Emas</h3>
+            <p class="text-gray-600">Kumpulkan poin dan tukarkan dengan hadiah emas 24K!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="my-16 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 font-montserrat">Pilihan Paket Hemat Kami</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-blue-500 flex flex-col items-center">
+          <i class="fas fa-tshirt text-5xl text-blue-500 mb-4"></i>
+          <h3 class="text-2xl font-semibold mb-2 font-montserrat">Reguler (Cuci + Setrika)</h3>
+          <p class="text-gray-600 text-lg mb-4">Estimasi 2-3 Hari</p>
+          <div class="text-4xl font-extrabold text-green-600 mb-6">Rp5.000<span class="text-2xl font-semibold">/kg</span></div>
+          <ul class="text-left text-gray-700 list-disc list-inside mb-6 space-y-2">
+            <li>Cuci bersih & wangi</li>
+            <li>Setrika rapih</li>
+            <li>Lipat & packing profesional</li>
+            <li>Cocok untuk kebutuhan harian</li>
+          </ul>
+          <a href="https://wa.me/6285716561112" class="mt-auto bg-blue-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-blue-600 transition-colors duration-300">Pesan Sekarang</a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-yellow-500 flex flex-col items-center">
+          <i class="fas fa-bolt text-5xl text-yellow-500 mb-4"></i>
+          <h3 class="text-2xl font-semibold mb-2 font-montserrat">Kilat (Cuci + Setrika)</h3>
+          <p class="text-gray-600 text-lg mb-4">Estimasi 1 Hari</p>
+          <div class="text-4xl font-extrabold text-green-600 mb-6">Rp10.000<span class="text-2xl font-semibold">/kg</span></div>
+          <ul class="text-left text-gray-700 list-disc list-inside mb-6 space-y-2">
+            <li>Proses super cepat</li>
+            <li>Prioritas pengerjaan</li>
+            <li>Cocok untuk mendesak</li>
+            <li>Tetap bersih & rapi</li>
+          </ul>
+          <a href="https://wa.me/6285716561112" class="mt-auto bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-bold text-lg hover:bg-yellow-600 transition-colors duration-300">Pesan Sekarang</a>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-green-500 flex flex-col items-center">
+          <i class="fas fa-iron text-5xl text-green-500 mb-4"></i>
+          <h3 class="text-2xl font-semibold mb-2 font-montserrat">Setrika Saja</h3>
+          <p class="text-gray-600 text-lg mb-4">Estimasi 1 Hari</p>
+          <div class="text-4xl font-extrabold text-green-600 mb-6">Rp4.000<span class="text-2xl font-semibold">/kg</span></div>
+          <ul class="text-left text-gray-700 list-disc list-inside mb-6 space-y-2">
+            <li>Setrika super rapih</li>
+            <li>Khusus untuk pakaian bersih</li>
+            <li>Hemat waktu & tenaga</li>
+            <li>Siap langsung pakai</li>
+          </ul>
+          <a href="https://wa.me/6285716561112" class="mt-auto bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition-colors duration-300">Pesan Sekarang</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="my-16 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 font-montserrat">❓ FAQ – Pertanyaan Umum</h2>
+        <div class="max-w-3xl mx-auto text-left">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="border-b pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
+                    <button class="flex justify-between items-center w-full focus:outline-none text-xl font-semibold text-gray-800 faq-question">
+                        <span>1. Apakah ada minimal berat cucian untuk antar jemput gratis?</span>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                        <p class="pt-4 text-gray-600">Tidak ada minimal! Mau 1 kg pun tetap kami jemput dan antar gratis.</p>
+                    </div>
+                </div>
+
+                <div class="border-b pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
+                    <button class="flex justify-between items-center w-full focus:outline-none text-xl font-semibold text-gray-800 faq-question">
+                        <span>2. Berapa lama proses laundry reguler?</span>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                        <p class="pt-4 text-gray-600">Untuk layanan reguler, estimasi pengerjaan 2-3 hari. Jika ingin lebih cepat, kami punya layanan kilat 1 hari!</p>
+                    </div>
+                </div>
+
+                <div class="border-b pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
+                    <button class="flex justify-between items-center w-full focus:outline-none text-xl font-semibold text-gray-800 faq-question">
+                        <span>3. Bagaimana cara klaim Loyalty Card Emas?</span>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                        <p class="pt-4 text-gray-600">Setiap 10 kali transaksi, Anda berhak mendapatkan 0.001g emas 24K. Kami akan informasikan saat Anda sudah mencapai kuota.</p>
+                    </div>
+                </div>
+
+                 <div class="border-b pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
+                    <button class="flex justify-between items-center w-full focus:outline-none text-xl font-semibold text-gray-800 faq-question">
+                        <span>4. Apakah GoKLin aman untuk pakaian ibadah?</span>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                        <p class="pt-4 text-gray-600">Sangat aman! Kami memastikan proses pencucian menggunakan air bersih dan detergen halal, serta tidak tercampur dengan pakaian yang berpotensi najis, sehingga aman untuk pakaian ibadah Anda.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="my-16 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 font-montserrat">Apa Kata Pelanggan Kami?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                <p class="text-gray-700 italic mb-4">"GoKLin Laundry benar-benar penyelamat! Pakaian selalu bersih sempurna dan wangi. Layanan jemput antar gratisnya itu lho, sangat membantu. Super praktis!"</p>
+                <div class="flex items-center mt-auto">
+                    <img src="https://i.imgur.com/YpWBcTL.jpeg" alt="Fitriani" class="w-12 h-12 rounded-full mr-4 border-2 border-blue-500">
+                    <div>
+                        <p class="font-semibold text-gray-800">Fitriani</p>
+                        <p class="text-sm text-gray-600">Dosen Universitas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                <p class="text-gray-700 italic mb-4">"Kualitas cucian jempolan, noda bandel hilang dan serat kain tetap terjaga. Stafnya ramah dan responsif. Harga juga bersaing banget. Rekomended!"</p>
+                <div class="flex items-center mt-auto">
+                    <img src="https://i.imgur.com/ZByTUsx.jpeg" alt="Bayu Pradana" class="w-12 h-12 rounded-full mr-4 border-2 border-yellow-500">
+                    <div>
+                        <p class="font-semibold text-gray-800">Bayu Pradana</p>
+                        <p class="text-sm text-gray-600">Pengusaha Muda</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                <p class="text-gray-700 italic mb-4">"Sebagai mahasiswa rantau, laundry itu PR banget. Untungnya ada GoKLin! Mereka super responsif, pakaian dijemput dan diantar tepat waktu. Wangiii pol!"</p>
+                <div class="flex items-center mt-auto">
+                    <img src="https://i.imgur.com/guDtjvL.jpeg" alt="Rina Amelia" class="w-12 h-12 rounded-full mr-4 border-2 border-green-500">
+                    <div>
+                        <p class="font-semibold text-gray-800">Rina Amelia</p>
+                        <p class="text-sm text-gray-600">Mahasiswi Unsoed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="my-16 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 font-montserrat">Hubungi Kami</h2>
+        <p class="text-lg text-gray-600 mb-8">Siap membantu Anda dengan layanan laundry terbaik!</p>
+        <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <p class="text-xl font-semibold mb-4 text-blue-600">GoKLin Laundry Purwokerto</p>
+            <p class="text-gray-700 mb-2">Jl. Gatramas Raya No.2 Blok O, Tegalmulya, Ledug, Kembaran,</p>
+            <p class="text-gray-700 mb-4">Kabupaten Banyumas, Jawa Tengah 53182</p>
+            <a href="https://wa.me/6285716561112" class="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition-colors duration-300">
+                <i class="fab fa-whatsapp mr-2"></i> Hubungi via WhatsApp
+            </a>
+            <div class="mt-8">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7912.950029201219!2d109.2750151!3d-7.4125616!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655f0063c4d10b%3A0x98c9b375e95d4369!2sGOKLin%20LAUNDRY!5e0!3m2!1sen!2sus!4v1752347867284!5m2!1sen!2sus"
+                    width="100%"
+                    height="350"
+                    style="border:0; border-radius: 8px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <a href="https://wa.me/6285716561112" class="floating-whatsapp" target="_blank" aria-label="Chat via WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="popup-overlay" id="discountPopup">
+    <div class="popup-content">
+      <button class="popup-close" id="closePopup">×</button>
+      <h3>YAKIN Mau Melewatkan Diskon GOKIL Ini?</h3>
+      <p>Dapatkan **30% POTONGAN HARGA** spesial untuk pelanggan baru! Jangan sampai kelewatan kesempatan emas ini.</p>
+      <a href="https://wa.me/6285716561112" target="_blank" class="popup-button">WA SEKARANG!</a>
+    </div>
+  </div>
+
+
+  <footer class="bg-gray-900 text-white py-8 text-center">
+    <div class="container mx-auto">
+      <div class="social-links mb-4">
+        <a href="https://www.facebook.com/goklinlaundry" target="_blank" aria-label="Facebook" class="text-white hover:text-blue-500 mx-3 text-2xl transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/goklinlaundry" target="_blank" aria-label="Instagram" class="text-white hover:text-pink-500 mx-3 text-2xl transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@goklinlaundry" target="_blank" aria-label="TikTok" class="text-white hover:text-gray-400 mx-3 text-2xl transition-colors duration-300"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <p class="text-sm">© 2025 GoKLin Laundry. All rights reserved. | Powered by Kang Hendy</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- Popup Logic ---
+    const discountPopup = document.getElementById('discountPopup');
+    const closePopupButton = document.getElementById('closePopup');
+    let hasScrolledToBottom = false;
+
+    // Show popup after a delay, or on scroll to bottom
+    setTimeout(() => {
+        if (!hasScrolledToBottom) { // Only show if not already shown by scroll
+            discountPopup.classList.add('show');
+        }
+    }, 10000); // Show after 10 seconds
+
+    function checkScrollForPopup() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+
+      // Show popup when user scrolls to bottom 200px of the page
+      if ((scrollTop + clientHeight >= scrollHeight - 200) && !hasScrolledToBottom) {
+        discountPopup.classList.add('show');
+        hasScrolledToBottom = true;
+        window.removeEventListener('scroll', checkScrollForPopup); // Remove listener once shown
+      }
+    }
+    window.addEventListener('scroll', checkScrollForPopup); // Add scroll listener
+
+    closePopupButton.addEventListener('click', () => {
+      discountPopup.classList.remove('show');
+    });
+
+    // --- FAQ Accordion Logic ---
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.closest('div'); // Get the parent div of the button
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = button.querySelector('i');
+
+            // Close other open FAQ items
+            document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                if (otherAnswer !== answer && otherAnswer.style.maxHeight) {
+                    otherAnswer.style.maxHeight = null;
+                    otherAnswer.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                }
+            });
+
+            // Toggle current FAQ item
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                icon.classList.remove('rotate-180');
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                icon.classList.add('rotate-180');
+            }
+        });
+    });
+
+  </script>
+</body>
+</html>
