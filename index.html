@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GOKLin Laundry PURWOKERTO - Promo GOKIL 30%</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="https://res.cloudinary.com/dnb9edx3e/image/upload/v1752372653/file_000000008a2461f997282432b9dda8fe_yfx3ue.png" type="image/png">
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dnb9edx3e/image/upload/v1752372653/file_000000008a2461f997282432b9dda8fe_yfx3ue.png" type="image/png">
+
+  <style>
+    /* --- CSS Variables (Modern Palette) --- */
+    :root {
+      --primary-blue: #00AEEF;    /* Main modern blue for header, strong elements */
+      --secondary-yellow: #FFD600; /* Accent yellow for buttons, highlights */
+      --accent-green: #34C759;   /* Green for icons, badges (e.g., success) */
+      --price-orange: #FFA000;   /* NEW: Orange-yellow for price text - more visible on white */
+      --background-light-grey: #F5F5F5; /* Light grey for alternate section backgrounds */
+      --text-dark: #333333;      /* Dark text for readability */
+      --text-medium: #555555;    /* Medium grey for secondary text */
+      --text-light: #777777;     /* Lighter grey for subtle text */
+      --white: #FFFFFF;          /* Pure white */
+      --shadow-color: rgba(0, 0, 0, 0.1); /* Standard shadow */
+      --shadow-hover: rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+      --border-light: #E0E0E0;   /* Light border color */
+
+      /* Specific colors for feature cards (adapted to new palette) */
+      --feature-bg-1: #E0F7FA; /* Light Teal Blue */
+      --feature-icon-1: var(--primary-blue);
+      --feature-border-1: var(--primary-blue);
+
+      --feature-bg-2: #FFFDE7; /* Very light yellow */
+      --feature-icon-2: var(--secondary-yellow);
+      --feature-border-2: var(--secondary-yellow);
+
+      --feature-bg-3: #E8F5E9; /* Very light green */
+      --feature-icon-3: var(--accent-green);
+      --feature-border-3: var(--accent-green);
+
+      --feature-bg-4: #E1F5FE; /* Lightest blue */
+      --feature-icon-4: var(--primary-blue);
+      --feature-border-4: var(--primary-blue);
+
+      --feature-bg-5: #FFEBEE; /* Light Pink/Red for Loyalty - subtle warmth */
+      --feature-icon-5: #F44336; /* A slightly redder tone for the gem */
+      --feature-border-5: #F44336;
+    }
+
+    /* --- Base Styles --- */
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: var(--background-light-grey);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-dark); /* Changed to text-dark for headings */
+      font-weight: 700;
+    }
+
+    p {
+      line-height: 1.7;
+      color: var(--text-medium);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary-blue);
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--secondary-yellow); /* Hover color for links */
+    }
+
+    /* --- Bubbles Canvas Styles --- */
+    canvas#bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(0.7px);
+      opacity: 0.7;
+    }
+
+    /* --- Section Fade-in Animation --- */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Header Section --- */
+    header {
+      background-color: var(--primary-blue); /* Modern blue for header */
+      color: var(--white);
+      padding: 60px 20px 70px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 6px 20px var(--shadow-color);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin: 0 0 15px;
+      color: var(--white); /* White for header text */
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    header p {
+      font-size: 22px;
+      margin: 0;
+      color: rgba(255,255,255,0.9);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+
+    /* --- Promo Banner --- */
+    .promo-banner {
+      background-color: var(--secondary-yellow); /* Yellow for promo banner */
+      color: var(--text-dark); /* Dark text for contrast */
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 0 0 25px 25px;
+      box-shadow: 0 8px 15px var(--shadow-color);
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0.8px;
+    }
+
+    .promo-banner span {
+      font-size: 30px;
+      background: var(--white);
+      color: var(--primary-blue); /* Primary blue for discount number */
+      padding: 8px 15px;
+      border-radius: 8px;
+      margin-left: 15px;
+      box-shadow: 0 2px 5px var(--shadow-color);
+    }
+
+    /* --- General Container --- */
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 50px 25px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- About Us Section --- */
+    .about-us-section {
+        background: var(--white);
+        padding: 60px 25px;
+        margin-top: 50px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px var(--shadow-color);
+        text-align: left;
+    }
+    .about-us-content {
+        max-width: 800px;
+        margin: auto;
+    }
+    .about-us-section h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+        text-align: center;
+    }
+    .about-us-section h3 {
+        font-size: 28px;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        color: var(--primary-blue); /* Secondary color for sub-headings */
+        text-align: center;
+    }
+    .about-us-section p {
+        font-size: 18px;
+        color: var(--text-medium);
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+    .about-us-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+    .about-us-section ul li {
+        font-size: 18px;
+        color: var(--text-medium);
+        margin-bottom: 10px;
+        padding-left: 30px;
+        position: relative;
+        line-height: 1.6;
+    }
+    .about-us-section ul li:before {
+        content: "\f00c";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--accent-green); /* Green checkmark */
+        position: absolute;
+        left: 0;
+        top: 2px;
+    }
+    .about-us-section img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 30px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+    }
+
+    /* --- Features Section --- */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 50px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-left: 8px solid var(--primary-blue);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px var(--shadow-color);
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px var(--shadow-hover);
+    }
+
+    .feature-card i {
+      font-size: 48px;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 15px;
+      font-size: 24px;
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* Specific styles for each feature card */
+    .feature-card.style-1 { background-color: var(--feature-bg-1); border-left-color: var(--feature-border-1); }
+    .feature-card.style-1 i { color: var(--feature-icon-1); }
+
+    .feature-card.style-2 { background-color: var(--feature-bg-2); border-left-color: var(--feature-border-2); }
+    .feature-card.style-2 i { color: var(--feature-icon-2); }
+
+    .feature-card.style-3 { background-color: var(--feature-bg-3); border-left-color: var(--feature-border-3); }
+    .feature-card.style-3 i { color: var(--feature-icon-3); }
+
+    .feature-card.style-4 { background-color: var(--feature-bg-4); border-left-color: var(--feature-border-4); }
+    .feature-card.style-4 i { color: var(--feature-icon-4); }
+
+    .feature-card.style-5 { background-color: var(--feature-bg-5); border-left-color: var(--feature-border-5); }
+    .feature-card.style-5 i { color: var(--feature-icon-5); }
+
+    /* --- Services Section --- */
+    .services-section {
+        background: var(--background-light-grey); /* Lighter grey for alternate section */
+        padding: 70px 25px;
+        margin-top: 60px;
+        box-shadow: inset 0 5px 15px rgba(0,0,0,0.03);
+        text-align: center;
+    }
+    .services-section h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+    }
+    .services-section p.intro-text {
+        font-size: 18px;
+        color: var(--text-medium);
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: auto;
+    }
+    .service-card {
+        background: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px var(--shadow-color);
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-bottom: 6px solid var(--primary-blue); /* Border color for service card */
+    }
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px var(--shadow-hover);
+    }
+    .service-card i {
+        font-size: 48px;
+        color: var(--primary-blue);
+        margin-bottom: 15px;
+    }
+    .service-card h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: var(--text-dark);
+    }
+    .service-card .price {
+        font-size: 28px;
+        font-weight: bold;
+        color: var(--price-orange); /* CHANGED: Price color now orange-yellow */
+        margin-bottom: 15px;
+    }
+    .service-card .price span {
+        font-size: 18px;
+        font-weight: normal;
+        color: var(--text-light);
+    }
+    .service-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px;
+        text-align: left;
+    }
+    .service-card ul li {
+        font-size: 16px;
+        color: var(--text-medium);
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+    }
+    .service-card ul li:before {
+        content: "\f00c";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--accent-green); /* Green checkmark */
+        position: absolute;
+        left: 0;
+        top: 2px;
+    }
+    .service-card .service-button {
+        display: inline-block;
+        padding: 12px 25px;
+        background: var(--primary-blue);
+        color: var(--white);
+        border-radius: 8px; /* Slightly rounded for modern feel */
+        font-weight: bold;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .service-card .service-button:hover {
+        background: #0088CC; /* Slightly darker blue on hover */
+        transform: translateY(-2px);
+    }
+
+    /* --- FAQ Section --- */
+    .faq-section {
+        background: var(--white);
+        padding: 70px 25px;
+        margin-top: 60px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px var(--shadow-color);
+        text-align: center;
+    }
+    .faq-section h2 {
+        font-size: 40px;
+        margin-bottom: 40px;
+        color: var(--text-dark);
+    }
+    .faq-list {
+        max-width: 800px;
+        margin: auto;
+    }
+    .faq-item {
+        border-bottom: 1px solid var(--border-light);
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        text-align: left;
+    }
+    .faq-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+    .faq-question:hover {
+        color: var(--primary-blue);
+    }
+    .faq-question h3 {
+        margin: 0;
+        font-size: 20px;
+        color: inherit;
+        font-weight: 600;
+    }
+    .faq-question .icon {
+        font-size: 24px;
+        color: var(--primary-blue);
+        transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-question .icon {
+        transform: rotate(45deg);
+    }
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .faq-answer p {
+        padding-bottom: 15px;
+        padding-top: 5px;
+        font-size: 17px;
+        color: var(--text-medium);
+        line-height: 1.6;
+        text-align: justify;
+    }
+    .faq-answer p strong {
+        color: var(--text-dark);
+    }
+    .faq-answer p span.price-highlight {
+        font-weight: bold;
+        color: var(--primary-blue); /* Price highlight in primary blue */
+    }
+
+    /* --- Call to Action Section --- */
+    .cta {
+      background-color: var(--primary-blue); /* CTA uses primary blue */
+      color: var(--white);
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 15px;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+
+    .cta h2 {
+      margin: 0 0 15px;
+      color: var(--white);
+      font-size: 36px;
+    }
+
+    .cta p {
+        color: rgba(255,255,255,0.9);
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 18px 35px;
+      background: var(--secondary-yellow); /* CTA button now secondary yellow */
+      color: var(--text-dark); /* Text color for CTA button */
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+    }
+
+    .cta a:hover {
+        background: #FFEC80; /* Slightly brighter yellow on hover */
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    /* --- Testimonials Section --- */
+    .testimonials-section {
+        background: var(--background-light-grey); /* Alternate background */
+        color: var(--text-dark);
+        padding: 70px 25px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 1;
+        box-shadow: inset 0 5px 15px rgba(0,0,0,0.03);
+    }
+
+    .testimonials-section h2 {
+        text-align: center;
+        color: var(--text-dark);
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .testimonials-section p.intro-text {
+        text-align: center;
+        font-size: 18px;
+        color: var(--text-medium);
+        margin-bottom: 60px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .testimonial-card {
+        background: var(--white);
+        border-radius: 10px; /* Slightly reduced border radius for a softer feel */
+        box-shadow: 0 10px 30px var(--shadow-color);
+        padding: 35px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--border-light);
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px var(--shadow-hover);
+    }
+
+    .testimonial-card p.quote {
+        font-size: 17px;
+        font-style: italic;
+        color: var(--text-dark);
+        margin-bottom: 25px;
+        line-height: 1.8;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        margin-top: auto;
+    }
+
+    .testimonial-author img {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 20px;
+        border: 4px solid var(--secondary-yellow); /* Yellow border for avatar */
+        box-shadow: 0 3px 10px var(--shadow-color);
+    }
+
+    .testimonial-author .name {
+        font-weight: bold;
+        color: var(--text-dark);
+        font-size: 19px;
+    }
+
+    .testimonial-author .title {
+        font-size: 15px;
+        color: var(--text-light);
+    }
+
+    /* --- Address and Map Section --- */
+    .address-map-section {
+        background: var(--white);
+        padding: 60px 25px;
+        position: relative;
+        z-index: 1;
+        color: var(--text-dark);
+    }
+
+    .address-map-section h2 {
+        text-align:center;
+        color:var(--text-dark);
+        font-size:40px;
+        margin-bottom:20px;
+    }
+
+    .address-map-section p {
+        text-align:center;
+        font-size:18px;
+        color:var(--text-medium);
+        margin-bottom: 35px;
+    }
+
+    .address-map-section .map-button {
+        display: block;
+        width: fit-content;
+        margin: 25px auto;
+        padding:15px 30px;
+        background: var(--primary-blue);
+        border-radius:10px;
+        text-decoration:none;
+        color: var(--white);
+        font-weight:bold;
+        font-size: 17px;
+        transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 3px 8px var(--shadow-color);
+    }
+
+    .address-map-section .map-button:hover {
+        background: #0088CC; /* Slightly darker blue on hover */
+        transform: translateY(-3px);
+        box-shadow: 0 5px 12px var(--shadow-hover);
+    }
+
+    .address-map-section iframe {
+        border:0;
+        border-radius:15px;
+        box-shadow: 0 8px 20px var(--shadow-hover);
+        margin-top:25px;
+        width: 100%;
+        max-width: 700px;
+        height: 400px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: var(--primary-blue);
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      margin-top: 60px;
+      position: relative;
+      z-index: 1;
+      border-top: 5px solid var(--secondary-yellow); /* Yellow line at footer top */
+    }
+
+    .social-links {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .social-links a {
+        color: var(--white);
+        font-size: 24px;
+        margin: 0 12px;
+        transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+        color: var(--secondary-yellow);
+    }
+
+    /* --- Popup Styles --- */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-content {
+      background: linear-gradient(to bottom right, var(--primary-blue), #007bb6); /* Gradient blue for popup */
+      color: var(--white);
+      padding: 45px 35px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      max-width: 450px;
+      transform: scale(0.85);
+      transition: transform 0.4s ease;
+      position: relative;
+      border: 3px solid var(--white);
+    }
+
+    .popup-overlay.show .popup-content {
+      transform: scale(1);
+    }
+
+    .popup-content h3 {
+      font-size: 32px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      color: var(--white);
+    }
+
+    .popup-content p {
+      font-size: 19px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .popup-content .popup-button {
+      display: inline-block;
+      padding: 18px 35px;
+      background: var(--secondary-yellow); /* Popup button uses secondary yellow */
+      color: var(--text-dark);
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 19px;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+    }
+
+    .popup-content .popup-button:hover {
+      background: #FFEC80;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      transition: transform 0.2s ease;
+    }
+
+    .popup-close:hover {
+      transform: rotate(90deg);
+    }
+
+    /* --- Floating WhatsApp Button --- */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--accent-green); /* WhatsApp button is accent green */
+      color: white;
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .floating-whatsapp i {
+      color: white;
+    }
+
+    /* Keyframe for pulse animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 992px) {
+        .container {
+            padding: 40px 20px;
+        }
+        .testimonials-section, .address-map-section, .about-us-section, .services-section, .faq-section {
+            padding: 50px 20px;
+        }
+        .testimonial-grid, .service-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 38px;
+      }
+      header p {
+        font-size: 19px;
+      }
+      .promo-banner {
+        font-size: 20px;
+        padding: 25px 20px;
+      }
+      .promo-banner span {
+        font-size: 26px;
+      }
+      .features {
+        grid-template-columns: 1fr;
+      }
+      .feature-card {
+        padding: 25px;
+      }
+      .feature-card i {
+        font-size: 42px;
+      }
+      .feature-card h3 {
+        font-size: 22px;
+      }
+      .feature-card p {
+        font-size: 15px;
+      }
+      .cta h2, .testimonials-section h2, .address-map-section h2, .about-us-section h2, .services-section h2, .faq-section h2 {
+          font-size: 32px;
+      }
+      .about-us-section h3 {
+          font-size: 24px;
+      }
+      .faq-question h3 {
+          font-size: 18px;
+      }
+      .faq-answer p {
+          font-size: 15px;
+      }
+      .cta p, .testimonials-section p.intro-text, .address-map-section p, .about-us-section p, .services-section p.intro-text {
+          font-size: 16px;
+      }
+      .about-us-section ul li {
+          font-size: 16px;
+      }
+      .cta a, .address-map-section .map-button, .service-card .service-button {
+          padding: 15px 30px;
+          font-size: 16px;
+      }
+      .testimonial-card p.quote {
+          font-size: 16px;
+      }
+      .testimonial-author img {
+          width: 55px;
+          height: 55px;
+      }
+      .testimonial-author .name {
+          font-size: 17px;
+      }
+      .testimonial-author .title {
+          font-size: 14px;
+      }
+      .popup-content {
+        padding: 35px 25px;
+        max-width: 90%;
+      }
+      .popup-content h3 {
+        font-size: 28px;
+      }
+      .popup-content p {
+        font-size: 17px;
+      }
+      .popup-content .popup-button {
+        font-size: 17px;
+        padding: 15px 30px;
+      }
+      .floating-whatsapp {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 20px;
+      }
+      .address-map-section iframe {
+          height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+        header h1 {
+            font-size: 32px;
+        }
+        header p {
+            font-size: 16px;
+        }
+        .promo-banner {
+            font-size: 16px;
+            padding: 20px;
+        }
+        .promo-banner span {
+            font-size: 22px;
+        }
+        .cta h2, .testimonials-section h2, .address-map-section h2, .about-us-section h2, .services-section h2, .faq-section h2 {
+            font-size: 28px;
+        }
+        .about-us-section h3 {
+            font-size: 22px;
+        }
+        .about-us-section ul li {
+            font-size: 15px;
+        }
+        .faq-question h3 {
+            font-size: 16px;
+        }
+        .faq-answer p {
+            font-size: 14px;
+        }
+        .popup-content h3 {
+            font-size: 24px;
+        }
+        .popup-content p {
+            font-size: 15px;
+        }
+        .service-card h3 {
+            font-size: 20px;
+        }
+        .service-card .price {
+            font-size: 24px;
+        }
+        .service-card ul li {
+            font-size: 14px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bubbles"></canvas>
+
+  <div class="main-content-wrapper">
+    <header>
+      <div class="header-content">
+        <h1>GOKLin Laundry PURWOKERTO</h1>
+        <p>Cari Laundry Murah di Purwokerto, Kilat, Aman Buat Ibadah Antar Jemput Sampai Depan Rumah</p>
+      </div>
+    </header>
+
+    <div class="promo-banner fade-in-section">
+      PROMO GOKIL! Pelanggan Baru Dapat Diskon<span>30%</span>🔥
+    </div>
+
+    <div class="container">
+      <section class="about-us-section fade-in-section">
+        <div class="about-us-content">
+          <h2>🌟 Tentang Kami</h2>
+          <p>GoKLin Laundry adalah layanan laundry profesional di Purwokerto yang hadir untuk memberikan solusi mencuci yang cepat, bersih, dan praktis. Kami memahami betapa berharganya waktu Anda, oleh karena itu kami hadir dengan layanan antar-jemput gratis tanpa minimal dan proses laundry 3x tahapan (lebih bersih, lebih wangi, lebih rapi).</p>
+          <p>Mulai dari pakaian harian, seragam kerja, hingga kebutuhan menyetrika saja – semua kami layani dengan penuh ketelitian dan standar kebersihan tinggi. Kami percaya, pakaian yang bersih dan wangi bisa meningkatkan rasa percaya diri dan kenyamanan Anda dalam beraktivitas.</p>
+          <p>Dengan harga mulai dari Rp5.000/kg, GoKLin menjadi pilihan hemat, aman, dan terpercaya untuk mahasiswa, ibu rumah tangga, dan keluarga modern.</p>
+
+          <h3>🎯 Visi Kami</h3>
+          <p>Menjadi laundry pilihan nomor satu di Purwokerto yang dikenal karena layanan terbaik, harga terjangkau, dan komitmen menjaga kesucian pakaian bagi seluruh pelanggan.</p>
+
+          <h3>🚀 Misi Kami</h3>
+          <ul>
+            <li>Menyediakan layanan laundry yang cepat, bersih, dan terjangkau untuk semua kalangan.</li>
+            <li>Memberikan layanan antar-jemput GRATIS tanpa minimal agar pelanggan semakin mudah dan hemat waktu.</li>
+            <li>Menjaga kualitas dengan proses 3x tahapan: pencucian, pewangian, dan penyetrikaan secara teliti.</li>
+            <li>Menjamin kebersihan dan kesucian pakaian, aman untuk dipakai ibadah.</li>
+            <li>Menghadirkan promo-promo menarik seperti loyalty card emas 24K sebagai bentuk apresiasi untuk pelanggan setia.</li>
+            <li>Memberdayakan SDM lokal dan membuka lapangan kerja melalui sistem laundry yang profesional dan terstruktur.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="features fade-in-section">
+        <div class="feature-card style-1">
+          <i class="fas fa-shuttle-van"></i>
+          <h3>Gratis Jemput</h3>
+          <p>Langsung WA saja, kami yang jemput tanpa ribet!</p>
+        </div>
+        <div class="feature-card style-2">
+          <i class="fas fa-tags"></i>
+          <h3>Harga Termurah</h3>
+          <p>Cuci + Setrika cuma Rp5.000/kg, kilat? Bisa! Setrika saja Rp4.000/kg Gokil hematnya</p>
+        </div>
+        <div class="feature-card style-3">
+          <i class="fas fa-sync-alt"></i>
+          <h3>Proses 3x</h3>
+          <p>Bersih banget! Cuci, bilas, bilas lagi. Wanginya tahan lama.</p>
+        </div>
+        <div class="feature-card style-4">
+          <i class="fas fa-mosque"></i>
+          <h3>Aman Buat Ibadah</h3>
+          <p>Air bersih, sabun aman, pakaian tetap suci dan nyaman dipakai sholat sesuai syariat 3x proses.</p>
+        </div>
+        <div class="feature-card style-5">
+            <i class="fas fa-gem"></i>
+            <h3>Loyalti Card Emas</h3>
+            <p>Cuci 10x = 0.001g Emas 24K. Keren & eksklusif!</p>
+        </div>
+      </div>
+
+      <section class="services-section fade-in-section">
+        <h2>Daftar Layanan & Harga</h2>
+        <p class="intro-text">Kami menawarkan berbagai pilihan layanan laundry untuk memenuhi kebutuhan Anda. Kualitas terbaik dengan harga terjangkau!</p>
+        <div class="service-grid">
+            <div class="service-card">
+                <i class="fas fa-tshirt"></i>
+                <h3>Cuci Kering + Setrika</h3>
+                <div class="price">Rp5.000<span>/kg</span></div>
+                <ul>
+                    <li>Cuci Bersih & Wangi</li>
+                    <li>Setrika Rapih</li>
+                    <li>Lipat & Packing</li>
+                    <li>Estimasi 2-3 Hari</li>
+                </ul>
+                <a href="https://wa.me/6285716561112" target="_blank" class="service-button">Pesan Sekarang</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Cuci Kilat + Setrika</h3>
+                <div class="price">Rp10.000<span>/kg</span></div>
+                <ul>
+                    <li>Proses Cepat (1 Hari)</li>
+                    <li>Cuci Bersih & Wangi</li>
+                    <li>Setrika Rapih</li>
+                    <li>Cocok untuk Mendesak</li>
+                </ul>
+                <a href="https://wa.me/6285716561112" target="_blank" class="service-button">Pesan Sekarang</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-iron"></i>
+                <h3>Setrika Saja</h3>
+                <div class="price">Rp4.000<span>/kg</span></div>
+                <ul>
+                    <li>Setrika Sangat Rapih</li>
+                    <li>Tanpa Cuci</li>
+                    <li>Lipat & Packing</li>
+                    <li>Estimasi 1 Hari</li>
+                </ul>
+                <a href="https://wa.me/6285716561112" target="_blank" class="service-button">Pesan Sekarang</a>
+            </div>
+        </div>
+      </section>
+
+      <section class="faq-section fade-in-section">
+        <h2>❓ FAQ – Pertanyaan yang Sering Diajukan</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>1. Apa itu GoKLin Laundry?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>GoKLin Laundry adalah layanan laundry profesional di Purwokerto yang menawarkan antar-jemput GRATIS tanpa minimal, harga mulai <span class="price-highlight">Rp5.000/kg</span>, dan proses laundry 3x lebih bersih, lebih wangi, lebih rapi.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>2. Dimana lokasi GoKLin Laundry?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Kami berlokasi di Perumahan Tegalsari, Blok O No. 2, Purwokerto. Tapi tenang aja, kamu nggak perlu datang — tinggal chat WhatsApp, kami yang jemput dan antar cucianmu GRATIS.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>3. Berapa harga layanan laundry di GoKLin?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Harga promo kami saat ini (selama 3 bulan ke depan):<br>
+              Cuci + Setrika Reguler (3 Hari): <span class="price-highlight">Rp5.000/kg</span><br>
+              Gosok/Setrika Kilat (1 Hari): <span class="price-highlight">Rp4.000/kg</span> (min. 3 kg), <span class="price-highlight">Rp5.000/kg</span> (<3 kg)<br>
+              Setelah 3 bulan, harga akan normal: <span class="price-highlight">Rp6.000/kg</span> (cuci), <span class="price-highlight">Rp5.000/kg</span> (gosok).</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>4. Apakah ada minimal berat cucian?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Tidak ada minimal. Mau 1 kg pun tetap kami ambil & antar GRATIS! Layanan ini berlaku untuk semua pelanggan di area Purwokerto dan sekitarnya.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>5. Apakah bisa hanya setrika saja?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Bisa banget! Banyak ibu-ibu yang pakai jasa gosok saja, terutama untuk seragam sekolah, kemeja kerja, atau baju spesial.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>6. Apakah pakaian saya dijamin aman dan tidak tertukar?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>100% Aman! Kami menggunakan proses laundry satuan (bukan kiloan campur) untuk menjaga pakaian tetap aman, tidak tertukar, dan higienis.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>7. Apakah GoKLin aman untuk pakaian ibadah (suci)?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Iya, kami sangat memperhatikan kesucian. Proses pencucian menggunakan air bersih, detergen halal, dan tidak tercampur pakaian najis. Aman untuk pakaian ibadah harian maupun shalat.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>8. Bagaimana cara pesan layanan GoKLin Laundry?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Gampang banget! 📲 Hubungi via WhatsApp: <a href="https://wa.me/6285716561112" target="_blank">0857-1656-1112</a><br>
+              Tinggal share lokasi, kami jemput cucian kamu langsung ke rumah.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>9. Apa ada promo menarik?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Ada dong!<br>
+              💎 Promo loyalty card: Cuci 10x, dapat emas 24K <span class="price-highlight">0.001 gram!</span><br>
+              📣 Dan promo bulanan lainnya yang akan kami update di WhatsApp & media sosial.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>10. Apakah GoKLin menerima laundry dari anak kos atau mahasiswa?</h3>
+              <i class="fas fa-plus icon"></i>
+            </div>
+            <div class="faq-answer">
+              <p>YESS! GoKLin sangat cocok buat anak kos dan mahasiswa yang pengen hemat, praktis, dan nggak punya waktu buat nyuci. Kami jemput langsung ke kamar!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta fade-in-section">
+        <h2>🎁 Yuk Manfaatkan Promo Ini!</h2>
+        <p>Cukup klik tombol WA, kami langsung jemput!</p>
+        <a href="https://wa.me/6285716561112" target="_blank" class="cta-button-animated">Chat Sekarang di WhatsApp</a>
+      </div>
+    </div>
+
+    <section class="testimonials-section fade-in-section">
+        <h2>Apa Kata Pelanggan Kami?</h2>
+        <p class="intro-text">Kami bangga telah membantu banyak pelanggan di Purwokerto menikmati pakaian bersih dan wangi tanpa repot. Berikut adalah beberapa testimoni dari mereka:</p>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="quote">"GoKLin Laundry benar-benar **penyelamat** di tengah kesibukan saya! Pakaian selalu kembali **bersih sempurna**, wangi, dan rapi. Layanan jemput antar gratisnya itu lho, sangat membantu. Prosesnya cepat, cuma WA saja, nanti diambil dan diantar lagi. **Super praktis!**"</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/gK2x3Cg.png" alt="Avatar Fitriani">
+                    <div>
+                        <div class="name">Fitriani</div>
+                        <div class="title">Dosen Universitas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Awalnya ragu coba laundry online, tapi GoKLin Laundry bikin saya **ketagihan!** Kualitas cuciannya **jempolan**, noda bandel hilang dan serat kain tetap terjaga. Ditambah lagi, stafnya ramah dan responsif. **Harga juga bersaing banget** dengan kualitas yang diberikan. Rekomended buat yang cari laundry terpercaya di Purwokerto!"</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/K5bQ4X2.png" alt="Avatar Bayu Pradana">
+                    <div>
+                        <div class="name">Bayu Pradana</div>
+                        <div class="title">Pengusaha Muda</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Sebagai mahasiswa rantau, laundry itu PR banget. Untungnya ada GoKLin! Mereka **super responsif**, pakaian dijemput dan diantar tepat waktu. Hasilnya? **Wangiii pol** dan rapi banget kayak disetrika profesional. Sekarang nggak perlu antre atau capek nyuci sendiri lagi. **GoKLin terbaik!**"</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/L3P2xRj.png" alt="Avatar Rina Amelia">
+                    <div>
+                        <div class="name">Rina Amelia</div>
+                        <div class="title">Mahasiswi Universitas Jenderal Soedirman</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Saya sering pakai jasa laundry untuk seragam kerja. Sejak pakai GoKLin, **nggak pernah kecewa**. Mereka detail banget, bahkan kancing yang longgar pun kadang diperbaiki. Ini menunjukkan **profesionalitas tinggi**. Cocok banget buat yang butuh layanan laundry premium di Purwokerto."</p>
+                <div class="testimonial-author">
+                    <img src="https://i.imgur.com/J8V7F9a.png" alt="Avatar Hadi Wijaya">
+                    <div>
+                        <div class="name">Hadi Wijaya</div>
+                        <div class="title">Pegawai Bank Swasta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="address-map-section fade-in-section">
+      <div class="container">
+        <h2>📍 Alamat GOKLin Laundry</h2>
+        <p>
+          Jl. Gatramas Raya No.2 Blok O, Tegalmulya, Ledug, Kec. Kembaran,<br>
+          Kabupaten Banyumas, Jawa Tengah 53182
+        </p>
+        <a href="https://www.google.com/maps/dir//Jalan+Gatramas+Raya+No.2+Blok+O,+Tegalmulya,+Ledug,+Kabupaten+Banyumas,+Jawa+Tengah,+Indonesia/data=!4m9!4m8!1m0!1m5!1m1!19sChIJX6nEA8leZS4REYc_mDpozWc!2m2!1d109.274425!2d-7.4124759!3e0" target="_blank" class="map-button">
+          Buka di Google Maps
+        </a>
+        <div style="margin-top:30px;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7912.950029201219!2d109.2750151!3d-7.4125616!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655f0063c4d10b%3A0x98c9b375e95d4369!2sGOKLin%20LAUNDRY!5e0!3m2!1sen!2sus!4v1752347867284!5m2!1sen!2sus" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.facebook.com/goklinlaundry" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/goklinlaundry" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@goklinlaundry" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+      © 2025 GOKLin Laundry | Powered by Kang Hendy
+    </footer>
+  </div>
+
+  <a href="https://wa.me/6285716561112" class="floating-whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="popup-overlay" id="discountPopup">
+    <div class="popup-content">
+      <button class="popup-close" id="closePopup">×</button>
+      <h3>YAKIN Mau Melewatkan Diskon GOKIL Ini?</h3>
+      <p>Dapatkan *30% POTONGAN HARGA* spesial untuk pelanggan baru! Jangan sampai kelewatan kesempatan emas ini.</p>
+      <a href="https://wa.me/6285716561112" target="_blank" class="popup-button">WA SEKARANG!</a>
+    </div>
+  </div>
+
+  <script>
+    // --- Bubble Animation Logic ---
+    const canvas = document.getElementById("bubbles");
+    const ctx = canvas.getContext("2d");
+    let bubbles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas(); // Initialize canvas size on load
+
+    function createBubble() {
+      return {
+        x: Math.random() * canvas.width,
+        y: canvas.height + 20, // Start from below the canvas
+        radius: Math.random() * 10 + 2,
+        speed: Math.random() * 1.2 + 0.5,
+        alpha: Math.random() * 0.15 + 0.3
+      };
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      bubbles = bubbles.filter(b => b.y > -20);
+      while (bubbles.length < 70) bubbles.push(createBubble());
+
+      for (let b of bubbles) {
+        b.y -= b.speed;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 174, 239, ${b.alpha})`; /* Bubbles color changed to primary-blue */
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate(); // Start the bubble animation
+
+    // --- Popup Logic ---
+    const discountPopup = document.getElementById('discountPopup');
+    const closePopupButton = document.getElementById('closePopup');
+    let hasScrolledToBottom = false;
+
+    function checkScrollForPopup() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+
+      if ((scrollTop + clientHeight >= scrollHeight - 200) && !hasScrolledToBottom) {
+        discountPopup.classList.add('show');
+        hasScrolledToBottom = true;
+        window.removeEventListener('scroll', checkScrollForPopup);
+      }
+    }
+
+    window.addEventListener('scroll', checkScrollForPopup);
+
+    closePopupButton.addEventListener('click', () => {
+      discountPopup.classList.remove('show');
+    });
+
+    // --- Section Fade-in on Scroll Logic ---
+    const faders = document.querySelectorAll(".fade-in-section");
+
+    const appearOptions = {
+      threshold: 0.2, // Trigger when 20% of the section is visible
+      rootMargin: "0px 0px -50px 0px" // Adjust bottom margin to trigger slightly earlier
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add("is-visible");
+          appearOnScroll.unobserve(entry.target); // Stop observing once visible
+        }
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // --- FAQ Accordion Logic ---
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        // Close all other open FAQ items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+          }
+        });
+
+        // Toggle the clicked FAQ item
+        item.classList.toggle('active');
+        const answer = item.querySelector('.faq-answer');
+        if (item.classList.contains('active')) {
+          answer.style.maxHeight = answer.scrollHeight + "px"; // Set max-height to scrollHeight for smooth expansion
+        } else {
+          answer.style.maxHeight = null; // Collapse the answer
+        }
+      });
+    });
+
+  </script>
+
+</body>
+</html>
